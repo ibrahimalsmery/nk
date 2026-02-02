@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نماء الخير | Al-Namaa Al-Khair Refugee Camp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* CSS Reset and Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        :root {
+            --primary-color: #1d5c3b;
+            --secondary-color: #e84a5f;
+            --light-color: #f8f7f3;
+            --dark-color: #1e2a24;
+            --accent-color: #f3b25f;
+            --ink-color: #1b1f1d;
+            --shadow: 0 12px 30px rgba(17, 24, 20, 0.16);
+            --soft-shadow: 0 10px 22px rgba(17, 24, 20, 0.08);
+            --border-radius: 14px;
+            --glass: rgba(255, 255, 255, 0.16);
+            --glass-strong: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f7f4ef;
+            color: var(--ink-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 20% 20%, rgba(243, 178, 95, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 10%, rgba(46, 111, 71, 0.12), transparent 45%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(247, 244, 239, 0.8));
+        }
+
+        body[dir="ltr"] {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(120deg, rgba(29, 92, 59, 0.95), rgba(20, 56, 40, 0.95));
+            color: white;
+            padding: 18px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.14);
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-en {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background-color: var(--glass);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(120deg, rgba(20, 56, 40, 0.9), rgba(39, 111, 70, 0.85)),
+                url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 90px 0 110px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(243, 178, 95, 0.45), transparent 70%);
+            top: -120px;
+            inset-inline-start: -80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            box-shadow: 0 10px 0 rgba(180, 40, 50, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #c1121f;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 0 rgba(180, 40, 50, 0.8);
+        }
+
+        /* Pain Section */
+        .pain-section {
+            padding: 80px 0;
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .pain-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pain-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--soft-shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(29, 92, 59, 0.08);
+        }
+
+        .pain-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pain-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pain-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pain-card:hover .pain-img img {
+            transform: scale(1.05);
+        }
+
+        .pain-content {
+            padding: 25px;
+        }
+
+        .pain-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .pain-content p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .donation-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .donation-text h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .donation-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .donation-form {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 247, 243, 0.95));
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(29, 92, 59, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(29, 92, 59, 0.18);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(29, 92, 59, 0.15);
+        }
+
+        .donation-amounts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .amount-btn {
+            flex: 1;
+            min-width: 80px;
+            padding: 12px;
+            background-color: white;
+            border: 2px solid rgba(29, 92, 59, 0.15);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .donate-btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 80px 0;
+            background-color: #f7f4ef;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            padding: 28px 20px;
+            border-radius: 18px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(29, 92, 59, 0.08);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(120deg, #1b2721, #0f1a15);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .donation-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo-en {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 6px 12px;
+            }
+
+            .lang-switch {
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 70px 0 90px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .pain-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-form {
+                padding: 22px;
+            }
+
+            .donation-amounts {
+                gap: 8px;
+            }
+
+            .amount-btn {
+                min-width: 70px;
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            .impact-stats {
+                gap: 16px;
+            }
+
+            .stat-item {
+                min-width: 0;
+            }
+
+            .footer-content {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .donate-btn {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* RTL/LTR specific adjustments */
+        [dir="rtl"] .section-title::after {
+            right: 50%;
+            left: auto;
+            transform: translateX(50%);
+        }
+
+        [dir="ltr"] .section-title::after {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+        }
+
+        /* Animation for emotional appeal */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Heartbeat animation for donate button */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                    <h1>نماء الخير</h1>
+                    <div class="logo-en">Al-Namaa Al-Khair Refugee Camp</div>
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#pain">معاناة اللاجئين</a></li>
+                    <li><a href="#donate">تبرع الآن</a></li>
+                    <li><a href="#impact">أثر تبرعك</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+
+            <div class="lang-switch">
+                <button class="lang-btn active" id="arabic-btn">عربي</button>
+                <button class="lang-btn" id="english-btn">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content fade-in">
+            <h2>يد واحدة لا تصفق، لكن أيدٍ كثيرة تبني مستقبلاً</h2>
+            <p>في مخيم "نماء الخير"، نعمل على تخفيف معاناة آلاف اللاجئين الذين فقدوا بيوتهم وأحلامهم. تبرعك اليوم قد
+                ينقذ حياة، يوفر طعاماً، أو يعيد الأمل لطفل.</p>
+            <a href="#donate" class="cta-button heartbeat">
+                <i class="fas fa-heart"></i> تبرع الآن وانقذ حياة
+            </a>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain-section" id="pain">
+        <div class="container">
+            <h2 class="section-title fade-in">معاناة لا تتصورها</h2>
+            <p class="fade-in delay-1"
+                style="text-align: center; font-size: 1.2rem; max-width: 900px; margin: 0 auto 30px; color: #555;">
+                هؤلاء ليسوا أرقاماً في تقارير. هم بشر مثلنا، كان لهم بيوت وأحلام، حتى جاءتهم الحرب فأخذت كل شيء.
+            </p>
+
+            <div class="pain-cards">
+                <div class="pain-card fade-in">
+                    <div class="pain-img">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="طفل جائع">
+                    </div>
+                    <div class="pain-content">
+                        <h3>الجوع الذي ينهش أجساد الأطفال</h3>
+                        <p>أكثر من 60% من الأطفال في المخيم يعانون من سوء التغذية. كثيرون منهم لا يجدون سوى وجبة واحدة
+                            في اليوم.</p>
+                        <p><i class="fas fa-quote-right" style="color: var(--primary-color);"></i> "لم أتذوق اللحم منذ
+                            أكثر من سنة، وأحياناً أنام وأنا جائع لأن الطعام لا يكفي الجميع" - أحمد، 9 سنوات</p>
+                    </div>
+                </div>
+
+                <div class="pain-card fade-in delay-1">
+                    <div class="pain-img">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="برد الشتاء">
+                    </div>
+                    <div class="pain-content">
+                        <h3>برد الشتاء القارس</h3>
+                        <p>الخيام البالية لا تقي من البرد والمطر. كثير من الأطفال والمسنين يعانون من أمراض الجهاز
+                            التنفسي بسبب الظروف القاسية.</p>
+                        <p><i class="fas fa-quote-right" style="color: var(--primary-color);"></i> "في الليل، نرتجف من
+                            البرد. بطاني قديمة ولا تدفئ، ولكن ماذا أفعل؟ لا أملك غيرها" - فاطمة، أم لثلاثة أطفال</p>
+                    </div>
+                </div>
+
+                <div class="pain-card fade-in delay-2">
+                    <div class="pain-img">
+                        <img src="https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1458&q=80"
+                            alt="حرمان من التعليم">
+                    </div>
+                    <div class="pain-content">
+                        <h3>حرمان من التعليم</h3>
+                        <p>آلاف الأطفال محرومون من التعليم. المدرسة في المخيم لا تستوعب سوى ثلث الأطفال، والعديد منهم
+                            يعمل لمساعدة عائلاتهم.</p>
+                        <p><i class="fas fa-quote-right" style="color: var(--primary-color);"></i> "أحب التعلم وأتمنى أن
+                            أصبح طبيبة، ولكن ليس لدينا كتب ولا مدرسة مناسبة" - سارة، 12 سنة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="donation-section" id="donate">
+        <div class="container">
+            <h2 class="section-title fade-in">تبرعك قد يغير حياة</h2>
+            <p class="fade-in delay-1"
+                style="text-align: center; font-size: 1.2rem; max-width: 900px; margin: 0 auto 50px; color: #555;">
+                كل تبرع، مهما كان صغيراً، يصنع فرقاً. لنبني معاً غداً أفضل لأهلنا في المخيم.
+            </p>
+
+            <div class="donation-container">
+                <div class="donation-text fade-in">
+                    <h3>لماذا نتبرع؟</h3>
+                    <p><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> 50 دولار توفر غذاء
+                        لعائلة مكونة من 5 أفراد لمدة أسبوع كامل.</p>
+                    <p><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> 100 دولار توفر بطانية
+                        وملابس شتوية لعائلة تحارب البرد.</p>
+                    <p><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> 200 دولار تساعد في بناء
+                        فصل دراسي لأطفال فقدوا حقهم في التعليم.</p>
+                    <p><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> 500 دولار توفر رعاية
+                        طبية لمدة شهر لعشرات المرضى في عيادة المخيم.</p>
+
+                    <div
+                        style="margin-top: 40px; padding: 20px; background-color: #f0f7f2; border-radius: var(--border-radius); border-right: 5px solid var(--primary-color);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">حديث نبوي شريف</h4>
+                        <p style="font-style: italic; color: #555;">"مثل المؤمنين في توادهم وتراحمهم وتعاطفهم مثل الجسد
+                            إذا اشتكى منه عضو تداعى له سائر الجسد بالسهر والحمى"</p>
+                    </div>
+                </div>
+
+                <div class="donation-form fade-in delay-1">
+                    <h3 style="color: var(--primary-color); margin-bottom: 25px; text-align: center;">تبرع الآن</h3>
+
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" placeholder="أدخل اسمك الكامل">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">مبلغ التبرع ($)</label>
+                        <input type="number" id="amount" placeholder="أدخل المبلغ الذي تريد التبرع به">
+
+                        <div class="donation-amounts">
+                            <button class="amount-btn" data-amount="25">$25</button>
+                            <button class="amount-btn" data-amount="50">$50</button>
+                            <button class="amount-btn active" data-amount="100">$100</button>
+                            <button class="amount-btn" data-amount="250">$250</button>
+                            <button class="amount-btn" data-amount="500">$500</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="method">طريقة الدفع</label>
+                        <select id="method">
+                            <option value="credit">بطاقة ائتمان</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bank">تحويل بنكي</option>
+                        </select>
+                    </div>
+
+                    <button class="donate-btn heartbeat">
+                        <i class="fas fa-hand-holding-heart"></i> تبرع الآن وساهم في صنع فرق
+                    </button>
+
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        جميع التبرعات آمنة ومشفرة. نحن نوفر شهادة تبرع لكل متبرع.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section" id="impact">
+        <div class="container">
+            <h2 class="section-title fade-in">أثر تبرعاتكم</h2>
+            <p class="fade-in delay-1"
+                style="text-align: center; font-size: 1.2rem; max-width: 900px; margin: 0 auto 50px; color: #555;">
+                بفضل المتبرعين الكريم، استطعنا إنجاز ما يلي خلال العام الماضي:
+            </p>
+
+            <div class="impact-stats">
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="stat-number">12,500</div>
+                    <div class="stat-text">وجبة غذائية يومياً</div>
+                </div>
+
+                <div class="stat-item fade-in delay-1">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-number">1,200</div>
+                    <div class="stat-text">طفل عادوا إلى المدارس</div>
+                </div>
+
+                <div class="stat-item fade-in delay-2">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-number">350</div>
+                    <div class="stat-text">خيمة بديلة للأسر</div>
+                </div>
+
+                <div class="stat-item fade-in delay-3">
+                    <div class="stat-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-number">5,000</div>
+                    <div class="stat-text">استشارة طبية مجانية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>نماء الخير</h4>
+                    <p>مخيم نماء الخير يقدم المساعدة الإنسانية للاجئين منذ 2015. نحن نعمل على توفير الغذاء، المأوى،
+                        التعليم والرعاية الصحية لأكثر من 10,000 لاجئ.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>اتصل بنا</h4>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>مخيم نماء الخير، منطقة الحدود الشمالية</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+966 55 123 4567</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@namaa-alkhair.org</span>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#pain">معاناة اللاجئين</a></li>
+                        <li><a href="#donate">التبرع</a></li>
+                        <li><a href="#">قصص النجاح</a></li>
+                        <li><a href="#">الشفافية والمتابعة</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>© 2023 مخيم نماء الخير للاجئين. جميع الحقوق محفوظة. | تم التطوير بدافع الإنسانية</p>
+                <p style="margin-top: 10px;">رقم الترخيص: 2457/ج هـ | منظمة غير ربحية مسجلة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Switching
+        const arabicBtn = document.getElementById('arabic-btn');
+        const englishBtn = document.getElementById('english-btn');
+        const body = document.body;
+        const html = document.documentElement;
+
+        // Arabic content
+        const arabicContent = {
+            title: "نماء الخير | مخيم اللاجئين",
+            nav: ["الرئيسية", "معاناة اللاجئين", "تبرع الآن", "أثر تبرعك", "اتصل بنا"],
+            heroTitle: "يد واحدة لا تصفق، لكن أيدٍ كثيرة تبني مستقبلاً",
+            heroText: "في مخيم 'نماء الخير'، نعمل على تخفيف معاناة آلاف اللاجئين الذين فقدوا بيوتهم وأحلامهم. تبرعك اليوم قد ينقذ حياة، يوفر طعاماً، أو يعيد الأمل لطفل.",
+            ctaButton: "تبرع الآن وانقذ حياة",
+            painTitle: "معاناة لا تتصورها",
+            painSubtitle: "هؤلاء ليسوا أرقاماً في تقارير. هم بشر مثلنا، كان لهم بيوت وأحلام، حتى جاءتهم الحرب فأخذت كل شيء.",
+            donateTitle: "تبرعك قد يغير حياة",
+            donateSubtitle: "كل تبرع، مهما كان صغيراً، يصنع فرقاً. لنبني معاً غداً أفضل لأهلنا في المخيم.",
+            impactTitle: "أثر تبرعاتكم",
+            impactSubtitle: "بفضل المتبرعين الكريم، استطعنا إنجاز ما يلي خلال العام الماضي:",
+            footerText: "مخيم نماء الخير يقدم المساعدة الإنسانية للاجئين منذ 2015. نحن نعمل على توفير الغذاء، المأوى، التعليم والرعاية الصحية لأكثر من 10,000 لاجئ."
+        };
+
+        // English content
+        const englishContent = {
+            title: "Al-Namaa Al-Khair | Refugee Camp",
+            nav: ["Home", "Refugee Suffering", "Donate Now", "Your Impact", "Contact Us"],
+            heroTitle: "One hand cannot clap, but many hands can build a future",
+            heroText: "At Al-Namaa Al-Khair camp, we work to alleviate the suffering of thousands of refugees who have lost their homes and dreams. Your donation today could save a life, provide food, or restore hope to a child.",
+            ctaButton: "Donate Now and Save a Life",
+            painTitle: "Unimaginable Suffering",
+            painSubtitle: "These are not numbers in reports. They are humans like us, who had homes and dreams, until war came and took everything.",
+            donateTitle: "Your Donation Can Change Lives",
+            donateSubtitle: "Every donation, no matter how small, makes a difference. Let's build a better tomorrow for our people in the camp together.",
+            impactTitle: "Impact of Your Donations",
+            impactSubtitle: "Thanks to generous donors, we have accomplished the following in the past year:",
+            footerText: "Al-Namaa Al-Khair camp has been providing humanitarian assistance to refugees since 2015. We work to provide food, shelter, education and healthcare to more than 10,000 refugees."
+        };
+
+        // Function to switch to Arabic
+        function switchToArabic() {
+            body.dir = "rtl";
+            html.lang = "ar";
+
+            document.title = arabicContent.title;
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach((link, index) => {
+                link.textContent = arabicContent.nav[index];
+            });
+
+            // Update hero section
+            document.querySelector('.hero h2').textContent = arabicContent.heroTitle;
+            document.querySelector('.hero p').textContent = arabicContent.heroText;
+            document.querySelector('.cta-button').innerHTML = '<i class="fas fa-heart"></i> ' + arabicContent.ctaButton;
+
+            // Update pain section
+            document.querySelector('#pain .section-title').textContent = arabicContent.painTitle;
+            document.querySelector('#pain p').textContent = arabicContent.painSubtitle;
+
+            // Update donation section
+            document.querySelector('#donate .section-title').textContent = arabicContent.donateTitle;
+            document.querySelector('#donate p').textContent = arabicContent.donateSubtitle;
+
+            // Update impact section
+            document.querySelector('#impact .section-title').textContent = arabicContent.impactTitle;
+            document.querySelector('#impact p').textContent = arabicContent.impactSubtitle;
+
+            // Update footer
+            document.querySelector('.footer-column p').textContent = arabicContent.footerText;
+
+            // Update button states
+            arabicBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+
+            // Update form placeholders
+            document.getElementById('name').placeholder = "أدخل اسمك الكامل";
+            document.getElementById('email').placeholder = "example@email.com";
+            document.getElementById('amount').placeholder = "أدخل المبلغ الذي تريد التبرع به";
+
+            // Update form labels
+            document.querySelector('label[for="name"]').textContent = "الاسم الكامل";
+            document.querySelector('label[for="email"]').textContent = "البريد الإلكتروني";
+            document.querySelector('label[for="amount"]').textContent = "مبلغ التبرع ($)";
+            document.querySelector('label[for="method"]').textContent = "طريقة الدفع";
+            document.querySelector('.donate-btn').innerHTML = '<i class="fas fa-hand-holding-heart"></i> تبرع الآن وساهم في صنع فرق';
+        }
+
+        // Function to switch to English
+        function switchToEnglish() {
+            body.dir = "ltr";
+            html.lang = "en";
+
+            document.title = englishContent.title;
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach((link, index) => {
+                link.textContent = englishContent.nav[index];
+            });
+
+            // Update hero section
+            document.querySelector('.hero h2').textContent = englishContent.heroTitle;
+            document.querySelector('.hero p').textContent = englishContent.heroText;
+            document.querySelector('.cta-button').innerHTML = '<i class="fas fa-heart"></i> ' + englishContent.ctaButton;
+
+            // Update pain section
+            document.querySelector('#pain .section-title').textContent = englishContent.painTitle;
+            document.querySelector('#pain p').textContent = englishContent.painSubtitle;
+
+            // Update donation section
+            document.querySelector('#donate .section-title').textContent = englishContent.donateTitle;
+            document.querySelector('#donate p').textContent = englishContent.donateSubtitle;
+
+            // Update impact section
+            document.querySelector('#impact .section-title').textContent = englishContent.impactTitle;
+            document.querySelector('#impact p').textContent = englishContent.impactSubtitle;
+
+            // Update footer
+            document.querySelector('.footer-column p').textContent = englishContent.footerText;
+
+            // Update button states
+            englishBtn.classList.add('active');
+            arabicBtn.classList.remove('active');
+
+            // Update form placeholders
+            document.getElementById('name').placeholder = "Enter your full name";
+            document.getElementById('email').placeholder = "example@email.com";
+            document.getElementById('amount').placeholder = "Enter donation amount";
+
+            // Update form labels
+            document.querySelector('label[for="name"]').textContent = "Full Name";
+            document.querySelector('label[for="email"]').textContent = "Email Address";
+            document.querySelector('label[for="amount"]').textContent = "Donation Amount ($)";
+            document.querySelector('label[for="method"]').textContent = "Payment Method";
+            document.querySelector('.donate-btn').innerHTML = '<i class="fas fa-hand-holding-heart"></i> Donate Now and Make a Difference';
+        }
+
+        // Event listeners for language buttons
+        arabicBtn.addEventListener('click', switchToArabic);
+        englishBtn.addEventListener('click', switchToEnglish);
+
+        // Donation amount buttons
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const amountInput = document.getElementById('amount');
+
+        amountButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                amountButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Set the input value
+                amountInput.value = this.getAttribute('data-amount');
+            });
+        });
+
+        // Form submission
+        const donateBtn = document.querySelector('.donate-btn');
+        const donationForm = document.querySelector('.donation-form');
+
+        donateBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const amount = document.getElementById('amount').value;
+            const method = document.getElementById('method').value;
+
+            if (!name || !email || !amount) {
+                alert(body.dir === "rtl" ? "يرجى ملء جميع الحقول المطلوبة" : "Please fill in all required fields");
+                return;
+            }
+
+            // Show success message
+            const successMsg = body.dir === "rtl"
+                ? `شكراً جزيلاً ${name}! تبرعك بمبلغ ${amount}$ سيساعد في إنقاذ حياة. سنرسل تأكيداً إلى ${email}.`
+                : `Thank you so much ${name}! Your donation of $${amount} will help save lives. A confirmation will be sent to ${email}.`;
+
+            alert(successMsg);
+
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('amount').value = '';
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+            amountButtons[2].classList.add('active'); // Reset to $100
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = function () {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+            element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        });
+
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
