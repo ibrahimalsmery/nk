@@ -123,6 +123,108 @@
             gap: 10px;
         }
 
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: var(--glass);
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            inset-inline-start: 0;
+            width: min(85vw, 360px);
+            height: 100vh;
+            background: linear-gradient(160deg, #183b2c, #0f2218);
+            color: white;
+            padding: 24px 20px;
+            box-shadow: 20px 0 40px rgba(0, 0, 0, 0.25);
+            transform: translateX(110%);
+            transition: transform 0.3s ease;
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        [dir="ltr"] .mobile-drawer {
+            transform: translateX(-110%);
+            inset-inline-start: auto;
+            inset-inline-end: 0;
+        }
+
+        .mobile-drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .drawer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .drawer-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .drawer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .drawer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 12px;
+            /* background: rgba(255, 255, 255, 0.08); */
+        }
+
+        .drawer-links a:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .drawer-lang {
+            display: flex;
+            gap: 10px;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1100;
+        }
+
+        .drawer-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .lang-btn {
             background-color: var(--glass);
             border: none;
@@ -531,26 +633,27 @@
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 900px) {
             .container {
                 padding: 0 16px;
             }
 
             .logo {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                text-align: start;
+                gap: 10px;
             }
 
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: 1.35rem;
             }
 
             .logo-en {
-                font-size: 1rem;
+                display: none;
             }
 
             .nav-links {
-                gap: 8px;
+                display: none;
             }
 
             .nav-links a {
@@ -559,7 +662,27 @@
             }
 
             .lang-switch {
-                justify-content: center;
+                display: none;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .header-container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            header {
+                padding: 10px 0;
+            }
+
+            .logo-icon {
+                font-size: 2rem;
+                padding: 6px;
             }
 
             .hero {
@@ -611,6 +734,19 @@
         }
 
         @media (max-width: 420px) {
+            header {
+                padding: 8px 0;
+            }
+
+            .header-container {
+                gap: 10px;
+            }
+
+            .logo-icon {
+                font-size: 1.8rem;
+                padding: 5px;
+            }
+
             .hero h2 {
                 font-size: 1.75rem;
             }
@@ -722,8 +858,33 @@
                 <button class="lang-btn active" id="arabic-btn">عربي</button>
                 <button class="lang-btn" id="english-btn">English</button>
             </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-title">القائمة</div>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#pain">معاناة اللاجئين</a></li>
+            <li><a href="#donate">تبرع الآن</a></li>
+            <li><a href="#impact">أثر تبرعك</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+        <div class="drawer-lang">
+            <button class="lang-btn active" id="arabic-btn-drawer">عربي</button>
+            <button class="lang-btn" id="english-btn-drawer">English</button>
+        </div>
+    </aside>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -793,7 +954,7 @@
     </section>
 
     <!-- Donation Section -->
-    <section class="donation-section" id="donate">
+    <!-- <section class="donation-section" id="donate">
         <div class="container">
             <h2 class="section-title fade-in">تبرعك قد يغير حياة</h2>
             <p class="fade-in delay-1"
@@ -866,10 +1027,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Impact Section -->
-    <section class="impact-section" id="impact">
+    <!-- <section class="impact-section" id="impact">
         <div class="container">
             <h2 class="section-title fade-in">أثر تبرعاتكم</h2>
             <p class="fade-in delay-1"
@@ -911,7 +1072,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer id="contact">
@@ -968,6 +1129,8 @@
         // Language Switching
         const arabicBtn = document.getElementById('arabic-btn');
         const englishBtn = document.getElementById('english-btn');
+        const arabicBtnDrawer = document.getElementById('arabic-btn-drawer');
+        const englishBtnDrawer = document.getElementById('english-btn-drawer');
         const body = document.body;
         const html = document.documentElement;
 
@@ -1017,40 +1180,62 @@
             });
 
             // Update hero section
-            document.querySelector('.hero h2').textContent = arabicContent.heroTitle;
-            document.querySelector('.hero p').textContent = arabicContent.heroText;
-            document.querySelector('.cta-button').innerHTML = '<i class="fas fa-heart"></i> ' + arabicContent.ctaButton;
+            const heroTitle = document.querySelector('.hero h2');
+            const heroText = document.querySelector('.hero p');
+            const ctaButton = document.querySelector('.cta-button');
+            if (heroTitle) heroTitle.textContent = arabicContent.heroTitle;
+            if (heroText) heroText.textContent = arabicContent.heroText;
+            if (ctaButton) ctaButton.innerHTML = '<i class="fas fa-heart"></i> ' + arabicContent.ctaButton;
 
             // Update pain section
-            document.querySelector('#pain .section-title').textContent = arabicContent.painTitle;
-            document.querySelector('#pain p').textContent = arabicContent.painSubtitle;
+            const painTitle = document.querySelector('#pain .section-title');
+            const painSubtitle = document.querySelector('#pain p');
+            if (painTitle) painTitle.textContent = arabicContent.painTitle;
+            if (painSubtitle) painSubtitle.textContent = arabicContent.painSubtitle;
 
             // Update donation section
-            document.querySelector('#donate .section-title').textContent = arabicContent.donateTitle;
-            document.querySelector('#donate p').textContent = arabicContent.donateSubtitle;
+            const donateTitle = document.querySelector('#donate .section-title');
+            const donateSubtitle = document.querySelector('#donate p');
+            if (donateTitle) donateTitle.textContent = arabicContent.donateTitle;
+            if (donateSubtitle) donateSubtitle.textContent = arabicContent.donateSubtitle;
 
             // Update impact section
-            document.querySelector('#impact .section-title').textContent = arabicContent.impactTitle;
-            document.querySelector('#impact p').textContent = arabicContent.impactSubtitle;
+            const impactTitle = document.querySelector('#impact .section-title');
+            const impactSubtitle = document.querySelector('#impact p');
+            if (impactTitle) impactTitle.textContent = arabicContent.impactTitle;
+            if (impactSubtitle) impactSubtitle.textContent = arabicContent.impactSubtitle;
 
             // Update footer
-            document.querySelector('.footer-column p').textContent = arabicContent.footerText;
+            const footerText = document.querySelector('.footer-column p');
+            if (footerText) footerText.textContent = arabicContent.footerText;
 
             // Update button states
             arabicBtn.classList.add('active');
             englishBtn.classList.remove('active');
+            if (arabicBtnDrawer && englishBtnDrawer) {
+                arabicBtnDrawer.classList.add('active');
+                englishBtnDrawer.classList.remove('active');
+            }
 
             // Update form placeholders
-            document.getElementById('name').placeholder = "أدخل اسمك الكامل";
-            document.getElementById('email').placeholder = "example@email.com";
-            document.getElementById('amount').placeholder = "أدخل المبلغ الذي تريد التبرع به";
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const amountInputEl = document.getElementById('amount');
+            if (nameInput) nameInput.placeholder = "أدخل اسمك الكامل";
+            if (emailInput) emailInput.placeholder = "example@email.com";
+            if (amountInputEl) amountInputEl.placeholder = "أدخل المبلغ الذي تريد التبرع به";
 
             // Update form labels
-            document.querySelector('label[for="name"]').textContent = "الاسم الكامل";
-            document.querySelector('label[for="email"]').textContent = "البريد الإلكتروني";
-            document.querySelector('label[for="amount"]').textContent = "مبلغ التبرع ($)";
-            document.querySelector('label[for="method"]').textContent = "طريقة الدفع";
-            document.querySelector('.donate-btn').innerHTML = '<i class="fas fa-hand-holding-heart"></i> تبرع الآن وساهم في صنع فرق';
+            const nameLabel = document.querySelector('label[for="name"]');
+            const emailLabel = document.querySelector('label[for="email"]');
+            const amountLabel = document.querySelector('label[for="amount"]');
+            const methodLabel = document.querySelector('label[for="method"]');
+            const donateBtnEl = document.querySelector('.donate-btn');
+            if (nameLabel) nameLabel.textContent = "الاسم الكامل";
+            if (emailLabel) emailLabel.textContent = "البريد الإلكتروني";
+            if (amountLabel) amountLabel.textContent = "مبلغ التبرع ($)";
+            if (methodLabel) methodLabel.textContent = "طريقة الدفع";
+            if (donateBtnEl) donateBtnEl.innerHTML = '<i class="fas fa-hand-holding-heart"></i> تبرع الآن وساهم في صنع فرق';
         }
 
         // Function to switch to English
@@ -1067,45 +1252,71 @@
             });
 
             // Update hero section
-            document.querySelector('.hero h2').textContent = englishContent.heroTitle;
-            document.querySelector('.hero p').textContent = englishContent.heroText;
-            document.querySelector('.cta-button').innerHTML = '<i class="fas fa-heart"></i> ' + englishContent.ctaButton;
+            const heroTitle = document.querySelector('.hero h2');
+            const heroText = document.querySelector('.hero p');
+            const ctaButton = document.querySelector('.cta-button');
+            if (heroTitle) heroTitle.textContent = englishContent.heroTitle;
+            if (heroText) heroText.textContent = englishContent.heroText;
+            if (ctaButton) ctaButton.innerHTML = '<i class="fas fa-heart"></i> ' + englishContent.ctaButton;
 
             // Update pain section
-            document.querySelector('#pain .section-title').textContent = englishContent.painTitle;
-            document.querySelector('#pain p').textContent = englishContent.painSubtitle;
+            const painTitle = document.querySelector('#pain .section-title');
+            const painSubtitle = document.querySelector('#pain p');
+            if (painTitle) painTitle.textContent = englishContent.painTitle;
+            if (painSubtitle) painSubtitle.textContent = englishContent.painSubtitle;
 
             // Update donation section
-            document.querySelector('#donate .section-title').textContent = englishContent.donateTitle;
-            document.querySelector('#donate p').textContent = englishContent.donateSubtitle;
+            const donateTitle = document.querySelector('#donate .section-title');
+            const donateSubtitle = document.querySelector('#donate p');
+            if (donateTitle) donateTitle.textContent = englishContent.donateTitle;
+            if (donateSubtitle) donateSubtitle.textContent = englishContent.donateSubtitle;
 
             // Update impact section
-            document.querySelector('#impact .section-title').textContent = englishContent.impactTitle;
-            document.querySelector('#impact p').textContent = englishContent.impactSubtitle;
+            const impactTitle = document.querySelector('#impact .section-title');
+            const impactSubtitle = document.querySelector('#impact p');
+            if (impactTitle) impactTitle.textContent = englishContent.impactTitle;
+            if (impactSubtitle) impactSubtitle.textContent = englishContent.impactSubtitle;
 
             // Update footer
-            document.querySelector('.footer-column p').textContent = englishContent.footerText;
+            const footerText = document.querySelector('.footer-column p');
+            if (footerText) footerText.textContent = englishContent.footerText;
 
             // Update button states
             englishBtn.classList.add('active');
             arabicBtn.classList.remove('active');
+            if (arabicBtnDrawer && englishBtnDrawer) {
+                arabicBtnDrawer.classList.remove('active');
+                englishBtnDrawer.classList.add('active');
+            }
 
             // Update form placeholders
-            document.getElementById('name').placeholder = "Enter your full name";
-            document.getElementById('email').placeholder = "example@email.com";
-            document.getElementById('amount').placeholder = "Enter donation amount";
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const amountInputEl = document.getElementById('amount');
+            if (nameInput) nameInput.placeholder = "Enter your full name";
+            if (emailInput) emailInput.placeholder = "example@email.com";
+            if (amountInputEl) amountInputEl.placeholder = "Enter donation amount";
 
             // Update form labels
-            document.querySelector('label[for="name"]').textContent = "Full Name";
-            document.querySelector('label[for="email"]').textContent = "Email Address";
-            document.querySelector('label[for="amount"]').textContent = "Donation Amount ($)";
-            document.querySelector('label[for="method"]').textContent = "Payment Method";
-            document.querySelector('.donate-btn').innerHTML = '<i class="fas fa-hand-holding-heart"></i> Donate Now and Make a Difference';
+            const nameLabel = document.querySelector('label[for="name"]');
+            const emailLabel = document.querySelector('label[for="email"]');
+            const amountLabel = document.querySelector('label[for="amount"]');
+            const methodLabel = document.querySelector('label[for="method"]');
+            const donateBtnEl = document.querySelector('.donate-btn');
+            if (nameLabel) nameLabel.textContent = "Full Name";
+            if (emailLabel) emailLabel.textContent = "Email Address";
+            if (amountLabel) amountLabel.textContent = "Donation Amount ($)";
+            if (methodLabel) methodLabel.textContent = "Payment Method";
+            if (donateBtnEl) donateBtnEl.innerHTML = '<i class="fas fa-hand-holding-heart"></i> Donate Now and Make a Difference';
         }
 
         // Event listeners for language buttons
         arabicBtn.addEventListener('click', switchToArabic);
         englishBtn.addEventListener('click', switchToEnglish);
+        if (arabicBtnDrawer && englishBtnDrawer) {
+            arabicBtnDrawer.addEventListener('click', switchToArabic);
+            englishBtnDrawer.addEventListener('click', switchToEnglish);
+        }
 
         // Donation amount buttons
         const amountButtons = document.querySelectorAll('.amount-btn');
@@ -1125,36 +1336,36 @@
         });
 
         // Form submission
-        const donateBtn = document.querySelector('.donate-btn');
-        const donationForm = document.querySelector('.donation-form');
+        // const donateBtn = document.querySelector('.donate-btn');
+        // const donationForm = document.querySelector('.donation-form');
 
-        donateBtn.addEventListener('click', function (e) {
-            e.preventDefault();
+        // donateBtn.addEventListener('click', function (e) {
+        //     e.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const amount = document.getElementById('amount').value;
-            const method = document.getElementById('method').value;
+        //     const name = document.getElementById('name').value;
+        //     const email = document.getElementById('email').value;
+        //     const amount = document.getElementById('amount').value;
+        //     const method = document.getElementById('method').value;
 
-            if (!name || !email || !amount) {
-                alert(body.dir === "rtl" ? "يرجى ملء جميع الحقول المطلوبة" : "Please fill in all required fields");
-                return;
-            }
+        //     if (!name || !email || !amount) {
+        //         alert(body.dir === "rtl" ? "يرجى ملء جميع الحقول المطلوبة" : "Please fill in all required fields");
+        //         return;
+        //     }
 
-            // Show success message
-            const successMsg = body.dir === "rtl"
-                ? `شكراً جزيلاً ${name}! تبرعك بمبلغ ${amount}$ سيساعد في إنقاذ حياة. سنرسل تأكيداً إلى ${email}.`
-                : `Thank you so much ${name}! Your donation of $${amount} will help save lives. A confirmation will be sent to ${email}.`;
+        //     // Show success message
+        //     const successMsg = body.dir === "rtl"
+        //         ? `شكراً جزيلاً ${name}! تبرعك بمبلغ ${amount}$ سيساعد في إنقاذ حياة. سنرسل تأكيداً إلى ${email}.`
+        //         : `Thank you so much ${name}! Your donation of $${amount} will help save lives. A confirmation will be sent to ${email}.`;
 
-            alert(successMsg);
+        //     alert(successMsg);
 
-            // Reset form
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('amount').value = '';
-            amountButtons.forEach(btn => btn.classList.remove('active'));
-            amountButtons[2].classList.add('active'); // Reset to $100
-        });
+        //     // Reset form
+        //     document.getElementById('name').value = '';
+        //     document.getElementById('email').value = '';
+        //     document.getElementById('amount').value = '';
+        //     amountButtons.forEach(btn => btn.classList.remove('active'));
+        //     amountButtons[2].classList.add('active'); // Reset to $100
+        // });
 
         // Fade in animation on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
@@ -1199,6 +1410,36 @@
                 }
             });
         });
+
+        // Mobile drawer
+        const menuToggle = document.getElementById('menu-toggle');
+        const drawer = document.getElementById('mobile-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+        const drawerClose = document.getElementById('drawer-close');
+
+        const openDrawer = () => {
+            drawer.classList.add('open');
+            drawerOverlay.classList.add('show');
+            drawer.setAttribute('aria-hidden', 'false');
+            menuToggle.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeDrawer = () => {
+            drawer.classList.remove('open');
+            drawerOverlay.classList.remove('show');
+            drawer.setAttribute('aria-hidden', 'true');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        if (menuToggle && drawer && drawerOverlay && drawerClose) {
+            menuToggle.addEventListener('click', openDrawer);
+            drawerClose.addEventListener('click', closeDrawer);
+            drawerOverlay.addEventListener('click', closeDrawer);
+
+            drawer.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
+        }
     </script>
 </body>
 
