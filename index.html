@@ -119,7 +119,7 @@
         }
 
         .lang-switch {
-            display: flex;
+            display: none;
             gap: 10px;
         }
 
@@ -246,7 +246,7 @@
         .hero {
             position: relative;
             background: linear-gradient(120deg, rgba(20, 56, 40, 0.9), rgba(39, 111, 70, 0.85)),
-                url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+                url('images/584f6a66-9da2-4c57-bb91-145e8e5f1ea2.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -336,6 +336,108 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+        }
+
+        /* Gallery Slider */
+        .gallery-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 247, 243, 0.95));
+        }
+
+        .gallery-slider {
+            position: relative;
+            margin-top: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: #0f1a15;
+            direction: ltr;
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform 0.6s ease;
+            will-change: transform;
+            height: 100%;
+        }
+
+        .gallery-slide {
+            flex: 0 0 100%;
+            height: 500px;
+            position: relative;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: var(--soft-shadow);
+            z-index: 2;
+        }
+
+        .gallery-btn:hover {
+            background: white;
+        }
+
+        .gallery-btn.prev {
+            inset-inline-start: 16px;
+        }
+
+        .gallery-btn.next {
+            inset-inline-end: 16px;
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 16px;
+            inset-inline-start: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            border: none;
+            cursor: pointer;
+        }
+
+        .gallery-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-slide {
+                height: 280px;
+            }
+
+            .gallery-btn {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         .pain-card {
@@ -662,6 +764,7 @@
             }
 
             .lang-switch {
+                
                 display: none;
             }
 
@@ -880,10 +983,10 @@
             <li><a href="#impact">أثر تبرعك</a></li>
             <li><a href="#contact">اتصل بنا</a></li>
         </ul>
-        <div class="drawer-lang">
+        <!-- <div class="drawer-lang">
             <button class="lang-btn active" id="arabic-btn-drawer">عربي</button>
             <button class="lang-btn" id="english-btn-drawer">English</button>
-        </div>
+        </div> -->
     </aside>
 
     <!-- Hero Section -->
@@ -892,14 +995,58 @@
             <h2>يد واحدة لا تصفق، لكن أيدٍ كثيرة تبني مستقبلاً</h2>
             <p>في مخيم "نماء الخير"، نعمل على تخفيف معاناة آلاف اللاجئين الذين فقدوا بيوتهم وأحلامهم. تبرعك اليوم قد
                 ينقذ حياة، يوفر طعاماً، أو يعيد الأمل لطفل.</p>
-            <a href="#donate" class="cta-button heartbeat">
+            <!-- <a href="#donate" class="cta-button heartbeat">
                 <i class="fas fa-heart"></i> تبرع الآن وانقذ حياة
-            </a>
+            </a> -->
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">لحظات من المخيم</h2>
+            <p class="fade-in delay-1"
+                style="text-align: center; font-size: 1.2rem; max-width: 900px; margin: 0 auto 30px; color: #555;">
+                صور تعكس واقع المخيم وأمل الأطفال في غدٍ أفضل.
+            </p>
+
+            <div class="gallery-slider" aria-label="Camp gallery slider">
+                <button class="gallery-btn prev" type="button" aria-label="Previous image">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="gallery-track">
+                    <div class="gallery-slide">
+                        <img src="images/584f6a66-9da2-4c57-bb91-145e8e5f1ea2.jpg" alt="مشهد من المخيم">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/010c44a4-c699-40d7-88d2-95e9016f5e34.jpg" alt="أطفال في المخيم">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/12d61acc-a165-40bc-b81b-99ccd6aec119.jpg" alt="ظروف الشتاء القاسية">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/34912dc1-5ad9-46f8-a84e-d4bf6908ca9d.jpg" alt="التعليم والأمل">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/76706d06-c869-49de-b864-076dc8bd2a4f.jpg" alt="حياة يومية في المخيم">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/c5cf18cc-d2b3-49b7-893b-e4fd6a8909ca.jpg" alt="مساعدة إنسانية">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/c7921e2f-c115-49db-8969-684a991754c5.jpg" alt="أمل وبدايات جديدة">
+                    </div>
+                </div>
+                <button class="gallery-btn next" type="button" aria-label="Next image">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="gallery-dots" role="tablist" aria-label="Select image"></div>
+            </div>
         </div>
     </section>
 
     <!-- Pain Section -->
-    <section class="pain-section" id="pain">
+    <!-- <section class="pain-section" id="pain">
         <div class="container">
             <h2 class="section-title fade-in">معاناة لا تتصورها</h2>
             <p class="fade-in delay-1"
@@ -910,7 +1057,7 @@
             <div class="pain-cards">
                 <div class="pain-card fade-in">
                     <div class="pain-img">
-                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        <img src="images/010c44a4-c699-40d7-88d2-95e9016f5e34.jpg"
                             alt="طفل جائع">
                     </div>
                     <div class="pain-content">
@@ -924,7 +1071,7 @@
 
                 <div class="pain-card fade-in delay-1">
                     <div class="pain-img">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        <img src="images/12d61acc-a165-40bc-b81b-99ccd6aec119.jpg"
                             alt="برد الشتاء">
                     </div>
                     <div class="pain-content">
@@ -938,7 +1085,7 @@
 
                 <div class="pain-card fade-in delay-2">
                     <div class="pain-img">
-                        <img src="https://images.unsplash.com/photo-1548094878-84ced0f6896d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1458&q=80"
+                        <img src="images/34912dc1-5ad9-46f8-a84e-d4bf6908ca9d.jpg"
                             alt="حرمان من التعليم">
                     </div>
                     <div class="pain-content">
@@ -951,7 +1098,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Donation Section -->
     <!-- <section class="donation-section" id="donate">
@@ -1082,18 +1229,18 @@
                     <h4>نماء الخير</h4>
                     <p>مخيم نماء الخير يقدم المساعدة الإنسانية للاجئين منذ 2023. نحن نعمل على توفير الغذاء، المأوى،
                         التعليم والرعاية الصحية  .</p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                    <!-- <div style="margin-top: 20px; display: flex; gap: 15px;">
                         <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
                         <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
                         <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    </div> -->
                 </div>
 
-                <div class="footer-column">
+                <!-- <div class="footer-column">
                     <h4>اتصل بنا</h4>
                     <div class="contact-info">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>مخيم نماء الخير، منطقة الحدود الشمالية</span>
+                        <span>مخيم نماء الخير، منطقة المواصي</span>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
@@ -1103,23 +1250,22 @@
                         <i class="fas fa-envelope"></i>
                         <span>info@namaa-alkhair.org</span>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="footer-column">
                     <h4>روابط سريعة</h4>
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#pain">معاناة اللاجئين</a></li>
+                        <!-- <li><a href="#pain">معاناة اللاجئين</a></li>
                         <li><a href="#donate">التبرع</a></li>
                         <li><a href="#">قصص النجاح</a></li>
-                        <li><a href="#">الشفافية والمتابعة</a></li>
+                        <li><a href="#">الشفافية والمتابعة</a></li> -->
                     </ul>
                 </div>
             </div>
 
             <div class="copyright">
                 <p>© 2023 مخيم نماء الخير للاجئين. جميع الحقوق محفوظة. | تم التطوير بدافع الإنسانية</p>
-                <p style="margin-top: 10px;">رقم الترخيص: 2457/ج هـ | منظمة غير ربحية مسجلة</p>
             </div>
         </div>
     </footer>
@@ -1141,6 +1287,8 @@
             heroTitle: "يد واحدة لا تصفق، لكن أيدٍ كثيرة تبني مستقبلاً",
             heroText: "في مخيم 'نماء الخير'، نعمل على تخفيف معاناة آلاف اللاجئين الذين فقدوا بيوتهم وأحلامهم. تبرعك اليوم قد ينقذ حياة، يوفر طعاماً، أو يعيد الأمل لطفل.",
             ctaButton: "تبرع الآن وانقذ حياة",
+            galleryTitle: "لحظات من المخيم",
+            gallerySubtitle: "صور تعكس واقع المخيم وأمل الأطفال في غدٍ أفضل.",
             painTitle: "معاناة لا تتصورها",
             painSubtitle: "هؤلاء ليسوا أرقاماً في تقارير. هم بشر مثلنا، كان لهم بيوت وأحلام، حتى جاءتهم الحرب فأخذت كل شيء.",
             donateTitle: "تبرعك قد يغير حياة",
@@ -1157,6 +1305,8 @@
             heroTitle: "One hand cannot clap, but many hands can build a future",
             heroText: "At Al-Namaa Al-Khair camp, we work to alleviate the suffering of thousands of refugees who have lost their homes and dreams. Your donation today could save a life, provide food, or restore hope to a child.",
             ctaButton: "Donate Now and Save a Life",
+            galleryTitle: "Moments from the Camp",
+            gallerySubtitle: "Photos that reflect camp life and the children's hope for a better tomorrow.",
             painTitle: "Unimaginable Suffering",
             painSubtitle: "These are not numbers in reports. They are humans like us, who had homes and dreams, until war came and took everything.",
             donateTitle: "Your Donation Can Change Lives",
@@ -1186,6 +1336,12 @@
             if (heroTitle) heroTitle.textContent = arabicContent.heroTitle;
             if (heroText) heroText.textContent = arabicContent.heroText;
             if (ctaButton) ctaButton.innerHTML = '<i class="fas fa-heart"></i> ' + arabicContent.ctaButton;
+
+            // Update gallery section
+            const galleryTitle = document.querySelector('#gallery .section-title');
+            const gallerySubtitle = document.querySelector('#gallery p');
+            if (galleryTitle) galleryTitle.textContent = arabicContent.galleryTitle;
+            if (gallerySubtitle) gallerySubtitle.textContent = arabicContent.gallerySubtitle;
 
             // Update pain section
             const painTitle = document.querySelector('#pain .section-title');
@@ -1258,6 +1414,12 @@
             if (heroTitle) heroTitle.textContent = englishContent.heroTitle;
             if (heroText) heroText.textContent = englishContent.heroText;
             if (ctaButton) ctaButton.innerHTML = '<i class="fas fa-heart"></i> ' + englishContent.ctaButton;
+
+            // Update gallery section
+            const galleryTitle = document.querySelector('#gallery .section-title');
+            const gallerySubtitle = document.querySelector('#gallery p');
+            if (galleryTitle) galleryTitle.textContent = englishContent.galleryTitle;
+            if (gallerySubtitle) gallerySubtitle.textContent = englishContent.gallerySubtitle;
 
             // Update pain section
             const painTitle = document.querySelector('#pain .section-title');
@@ -1366,6 +1528,85 @@
         //     amountButtons.forEach(btn => btn.classList.remove('active'));
         //     amountButtons[2].classList.add('active'); // Reset to $100
         // });
+
+        // Gallery slider
+        const gallerySlider = document.querySelector('.gallery-slider');
+        if (gallerySlider) {
+            const galleryTrack = gallerySlider.querySelector('.gallery-track');
+            const gallerySlides = Array.from(gallerySlider.querySelectorAll('.gallery-slide'));
+            const prevBtn = gallerySlider.querySelector('.gallery-btn.prev');
+            const nextBtn = gallerySlider.querySelector('.gallery-btn.next');
+            const dotsContainer = gallerySlider.querySelector('.gallery-dots');
+            let currentIndex = 0;
+            let autoTimer = null;
+
+            const renderDots = () => {
+                dotsContainer.innerHTML = '';
+                gallerySlides.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'gallery-dot' + (index === 0 ? ' active' : '');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        restartAuto();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            };
+
+            const updateDots = () => {
+                const dots = Array.from(dotsContainer.children);
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            };
+
+            const goToSlide = (index) => {
+                currentIndex = (index + gallerySlides.length) % gallerySlides.length;
+                galleryTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots();
+            };
+
+            const startAuto = () => {
+                autoTimer = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 4500);
+            };
+
+            const stopAuto = () => {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            };
+
+            const restartAuto = () => {
+                stopAuto();
+                startAuto();
+            };
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex - 1);
+                    restartAuto();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                    restartAuto();
+                });
+            }
+
+            gallerySlider.addEventListener('mouseenter', stopAuto);
+            gallerySlider.addEventListener('mouseleave', startAuto);
+            gallerySlider.addEventListener('touchstart', stopAuto, { passive: true });
+            gallerySlider.addEventListener('touchend', startAuto);
+
+            renderDots();
+            goToSlide(0);
+            startAuto();
+        }
 
         // Fade in animation on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
